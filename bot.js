@@ -170,7 +170,7 @@ function processAviatorFile(filePath, chatId, originalFileName) {
 
         // Определяем имена файлов
         const outputFileName1 = `${date}_Linear_Retention_${step}_Aviator_crm.csv`;
-        const outputFileName2 = `Linear_Retention_${step}_Aviator_crm.csv`;
+        const outputFileName2 = `Crm_casino_Regular_LinearRetention${step}_FS_Multi_Aviator_1.csv`;
 
         // Создаем заголовки для CSV файлов
         const header1 = ['user_id'];
