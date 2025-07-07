@@ -1,7 +1,7 @@
 {
   "name": "my-telegram-bot",
   "version": "1.0.0",
-  "main": "bot.js", 
+  "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,9 @@
     "axios": "^1.8.1",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
+    "express": "^5.1.0",
     "fs": "^0.0.1-security",
+    "node-fetch": "^2.7.0",
     "node-telegram-bot-api": "^0.66.0",
     "path": "^0.12.7",
     "telegraf": "^4.16.3",
