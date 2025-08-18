@@ -16,9 +16,21 @@ process.on('uncaughtException', (e) => console.error('UNCAUGHT EXCEPTION:', e));
 // Получаем токен из переменной окружения
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
-// Создаем экземпляр бота с keep-alive агентом (меньше обрывов)
+// Создаем экземпляр бота с keep-alive агентом,
+// НО polling сразу НЕ запускаем — сначала уберём webhook
 const agent = new https.Agent({ keepAlive: true, maxSockets: 5 });
-const bot = new TelegramBot(TOKEN, { polling: true, request: { agent } });
+const bot = new TelegramBot(TOKEN, { polling: false, request: { agent } });
+
+// Явно отключаем вебхук и только потом стартуем polling
+(async () => {
+  try {
+    await bot.deleteWebHook({ dropPendingUpdates: true });
+    await bot.startPolling();
+    console.log('Bot polling started');
+  } catch (e) {
+    console.error('Failed to start polling:', e);
+  }
+})();
 
 // Папки для файлов
 const INPUT_DIR = 'uploads'; // Папка для загруженных файлов
